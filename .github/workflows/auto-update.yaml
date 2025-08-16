@@ -1,0 +1,14 @@
+name: Auto-Update Client Data
+on:
+  workflow_dispatch:  # Manual trigger
+  schedule:
+    - cron: '0 8 * * 1'  # Weekly (Mondays 8AM)
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python generate_files.py
+          git commit -am "Auto-update" && git push

@@ -1,0 +1,8 @@
+# MANDATORY HEADER (single column - GitHub's requirement)
+client_data
+"client_name:Example Inc|website:https://example.com|category:Construction"
+"description:Professional services|hours:Mon-Fri 9AM-5PM"
+"services:Repairs,Installations,Emergency"
+"products:Tools,Equipment"
+"faqs:What are hours?:9AM-5PM|Warranty?:Yes"
+"locations:Main Office:123 Main St:555-1234|Branch:456 Oak St"
