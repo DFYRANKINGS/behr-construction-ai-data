@@ -1,1 +1,2 @@
-client_data
+client_name,website,category,description,phone,hours,services,faqs,locations
+"Behr Construction","https://example.com","Contractor","Professional...","555-1234","Mon-Fri 9-5","Remodeling,Repairs","What are hours?:9-5|Warranty?:Yes","Main Office:123 Main St:555-1111;Branch:456 Oak Ave"
