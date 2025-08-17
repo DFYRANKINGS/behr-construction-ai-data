@@ -1,4 +1,4 @@
-name: Generate Files
+name: Generate AI Files
 on:
   push:
     paths: ['client-data.csv']
@@ -8,14 +8,47 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required for git diff to work properly
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-      - run: pip install pandas
-      - run: python generate_files.py
-      - run: |
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas python-dotenv
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      
+      - name: Generate files
+        id: generate
+        run: |
+          echo "Running file generation..."
+          python generate_files.py
+          
+          # Verify files were created
+          if [ ! -f "outputs/schema.json" ]; then
+            echo "::error::Schema file was not generated!"
+            exit 1
+          fi
+          echo "Files generated successfully"
+      
+      - name: Commit and push changes
+        if: steps.generate.outcome == 'success'
+        run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
-          git diff --quiet || (git commit -m "Auto-generated files" && git push)
+          
+          # Only commit if there are changes
+          if git diff --quiet --exit-code; then
+            echo "No changes to commit"
+          else
+            git commit -m "Auto-generated files [skip ci]"
+            git pull --rebase
+            git push
+          fi
