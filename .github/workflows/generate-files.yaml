@@ -1,53 +1,41 @@
-name: Generate AI Files
+name: Generate Client Files
 on:
   push:
-    paths: ['behr-construction/client-data.csv']  # Updated path to client-specific CSV
-  schedule:
-    - cron: '0 8 * * 1'  # Mondays 8AM UTC
+    paths: ['main/client-data.csv']  # Tracks CSV in your precise structure
   workflow_dispatch:
 
 jobs:
-  process:
+  generate:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-    
+
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-      
-      - name: Install dependencies
+
+      - name: Verify Structure
         run: |
-          python -m pip install --upgrade pip
-          pip install pandas==2.0.3 requests==2.31.0 python-dotenv==1.0.0
-      
-      - name: Validate Client Folder Structure  # NEW
-        run: |
-          echo "=== CLIENT FOLDER CONTENTS ==="
-          ls -la behr-construction/
-          echo "=== CSV VALIDATION ==="
-          head -n 3 behr-construction/client-data.csv || echo "❌ CSV missing!"
-          echo "=== REQUIRED DIRECTORIES ==="
-          mkdir -p behr-construction/{schemas,training,sitemaps}
-      
+          echo "=== REPO STRUCTURE ==="
+          ls -lR
+          echo "=== CLIENT DATA ==="
+          head -n 3 main/client-data.csv
+
       - name: Generate Files
         run: |
-          echo "=== EXECUTION START ==="
+          cd main
           python generate_ai_files.py
           echo "=== GENERATED FILES ==="
-          ls -lR behr-construction/schemas/ behr-construction/training/ behr-construction/sitemaps/
-          echo "=== FILE CONTENTS ==="
-          head -n 10 behr-construction/schemas/*.json behr-construction/training/*.json
-      
+          ls -lR ../schemas/ ../llm-training/
+
       - name: Commit Changes
-        if: success()
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add behr-construction/  # Only commit client folder changes
-          git diff --cached --quiet || (git commit -m "Auto-update client files [skip ci]" && git push)
+          git add .
+          git diff --quiet || (git commit -m "Auto-generated client files [skip ci]" && git push)
