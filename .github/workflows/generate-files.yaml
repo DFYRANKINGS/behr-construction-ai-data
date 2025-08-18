@@ -1,41 +1,28 @@
-name: Generate Client Files
+name: Generate Files
 on:
   push:
-    paths: ['main/client-data.csv']  # Tracks CSV in your precise structure
+    paths: ['main/client-data.csv']
   workflow_dispatch:
 
 jobs:
   generate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-
-      - name: Verify Structure
-        run: |
-          echo "=== REPO STRUCTURE ==="
-          ls -lR
-          echo "=== CLIENT DATA ==="
-          head -n 3 main/client-data.csv
-
-      - name: Generate Files
+      - name: Install pandas
+        run: pip install pandas
+      - name: Generate files
         run: |
           cd main
           python generate_ai_files.py
-          echo "=== GENERATED FILES ==="
-          ls -lR ../schemas/ ../llm-training/
-
-      - name: Commit Changes
+          ls -l ../schemas/faqs/ ../llm-training/
+      - name: Commit changes
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
-          git diff --quiet || (git commit -m "Auto-generated client files [skip ci]" && git push)
+          git commit -m "Auto-generated files [skip ci]" || echo "No changes"
+          git push
