@@ -1,7 +1,7 @@
 name: Generate AI Files
 on:
   push:
-    paths: ['client-data.csv']
+    paths: ['behr-construction/client-data.csv']  # Updated path to client-specific CSV
   schedule:
     - cron: '0 8 * * 1'  # Mondays 8AM UTC
   workflow_dispatch:
@@ -15,8 +15,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Ensures full git history
-      
+          fetch-depth: 0
+    
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
@@ -24,28 +24,30 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install requests pandas python-dotenv  # Explicit installs
+          pip install pandas==2.0.3 requests==2.31.0 python-dotenv==1.0.0
       
-      - name: Debug - Verify files
+      - name: Validate Client Folder Structure  # NEW
         run: |
-          echo "=== WORKSPACE CONTENTS ==="
-          ls -la
-          echo "=== CSV SAMPLE ==="
-          head client-data.csv || echo "CSV not found"
+          echo "=== CLIENT FOLDER CONTENTS ==="
+          ls -la behr-construction/
+          echo "=== CSV VALIDATION ==="
+          head -n 3 behr-construction/client-data.csv || echo "❌ CSV missing!"
+          echo "=== REQUIRED DIRECTORIES ==="
+          mkdir -p behr-construction/{schemas,training,sitemaps}
       
-      - name: Process files
+      - name: Generate Files
         run: |
-          echo "=== PYTHON DEBUG ==="
-          python -c "import os; print(f'Working dir: {os.getcwd()}')"
-          python generate_ai_files.py 2>&1 | tee output.log
-          cat output.log  # Ensures errors are visible
+          echo "=== EXECUTION START ==="
+          python generate_ai_files.py
+          echo "=== GENERATED FILES ==="
+          ls -lR behr-construction/schemas/ behr-construction/training/ behr-construction/sitemaps/
+          echo "=== FILE CONTENTS ==="
+          head -n 10 behr-construction/schemas/*.json behr-construction/training/*.json
       
-      - name: Commit changes
-        if: success()  # Only commit if previous steps succeeded
+      - name: Commit Changes
+        if: success()
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add .
-          git diff --quiet && echo "No changes" || \
-            (git commit -m "Auto-generated files [skip ci]" && git push)
+          git add behr-construction/  # Only commit client folder changes
+          git diff --cached --quiet || (git commit -m "Auto-update client files [skip ci]" && git push)
