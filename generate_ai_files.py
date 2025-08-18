@@ -2,53 +2,33 @@
 import os
 import pandas as pd
 import json
-from pathlib import Path
 
-# PATHS MATCHING YOUR STRUCTURE
-BASE_DIR = Path(__file__).parent.parent
-SCHEMA_DIR = BASE_DIR / "schemas"
-TRAINING_DIR = BASE_DIR / "llm-training"
-CSV_PATH = BASE_DIR / "main" / "client-data.csv"
+# PATHS THAT MATCH YOUR STRUCTURE
+INPUT_CSV = "main/client-data.csv"  # Your CSV location
+SCHEMA_DIR = "schemas/faqs"        # Your FAQ folder
+TRAINING_DIR = "llm-training"      # Your LLM folder
 
 def generate_files():
-    print("🚀 Generating files for client...")
+    print("⚡ Generating files...")
     
-    try:
-        # 1. Load data
-        df = pd.read_csv(CSV_PATH)
-        
-        # 2. Create FAQ Schema (goes to schemas/faqs/)
-        faq_path = SCHEMA_DIR / "faqs" / "faqs.json"
-        faq_path.parent.mkdir(exist_ok=True)
-        with open(faq_path, 'w') as f:
-            json.dump({
-                "@context": "https://schema.org",
-                "@type": "FAQPage",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": f"About {row['client_name']}'s services",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": row['services']
-                        }
-                    } for _, row in df.iterrows()
-                ]
-            }, f, indent=2)
-
-        # 3. Create LLM Training (goes to llm-training/)
-        training_path = TRAINING_DIR / "llm.txt"
-        training_path.parent.mkdir(exist_ok=True)
-        with open(training_path, 'w') as f:
-            f.write(f"Client: {df.iloc[0]['client_name']}\n")
-            f.write(f"Services: {df.iloc[0]['services']}\n")
-
-        print(f"✅ Generated:\n- {faq_path}\n- {training_path}")
-        return True
-
-    except Exception as e:
-        print(f"❌ FAILED: {str(e)}")
-        return False
+    # 1. Load data
+    df = pd.read_csv(INPUT_CSV)
+    client_name = df.iloc[0]['client_name']
+    
+    # 2. Create FAQ schema
+    os.makedirs(SCHEMA_DIR, exist_ok=True)
+    with open(f"{SCHEMA_DIR}/faqs.json", 'w') as f:
+        json.dump({
+            "client": client_name,
+            "faqs": df['faqs'].tolist() 
+        }, f, indent=2)
+    
+    # 3. Create LLM training
+    os.makedirs(TRAINING_DIR, exist_ok=True)
+    with open(f"{TRAINING_DIR}/llm.txt", 'w') as f:
+        f.write(f"Client: {client_name}\nServices: {df.iloc[0]['services']}")
+    
+    print(f"✅ Generated files in:\n- {SCHEMA_DIR}\n- {TRAINING_DIR}")
 
 if __name__ == "__main__":
-    exit(0 if generate_files() else 1)
+    generate_files()
