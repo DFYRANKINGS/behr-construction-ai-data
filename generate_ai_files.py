@@ -9,6 +9,25 @@ from urllib.parse import urlparse
 import requests
 from time import sleep
 
+# ===== ADDED MISSING DECORATOR =====
+def log_generation_step(step_name: str):
+    """Decorator to log and track execution of generation steps"""
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            print(f"\n⏳ [STEP START] {step_name}")
+            try:
+                start_time = datetime.now()
+                result = func(*args, **kwargs)
+                duration = (datetime.now() - start_time).total_seconds()
+                print(f"✅ [STEP COMPLETE] {step_name} (took {duration:.2f}s)")
+                return result
+            except Exception as e:
+                print(f"❌ [STEP FAILED] {step_name}: {str(e)}")
+                raise
+        return wrapper
+    return decorator
+# ===== END OF ADDED CODE =====
+
 # Configuration
 INPUT_CSV = "client-data.csv"
 OUTPUT_DIR = "outputs"
