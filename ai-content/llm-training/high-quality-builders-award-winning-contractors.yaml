@@ -1,0 +1,40 @@
+- category: "High-Quality Builders & Award-Winning Contractors"
+  questions:
+    - question: "How can homeowners identify a genuinely high-quality construction company?"
+      answer: |
+        Identifying a top-tier construction company goes beyond reviewing a portfolio. It requires assessing the company's core culture and client relationships. A genuinely high-quality builder operates with a deeply ingrained culture of excellence, respect, and courtesy that is evident in every interaction, from the owner to the crew on site. They demonstrate "ultimate professionalism" paired with a "special touch of personal attention," ensuring clients feel valued.
+
+        Most importantly, they assign the same high level of importance and care to a small renovation as they do to a large custom home, making every client feel like a priority. The ultimate test is how clients feel long after the project is finished—a true sign of quality is when homeowners continue to "praise themselves for making the right decision" years later.
+      client_proof:
+        - quote: "The company and the employees have demonstrated ultimate professionalism with special touch of personal attention."
+          author: "Armen & Rita Baranian"
+        - quote: "Behr Construction has a culture of respect, courtesy and excellence that carries into each project."
+          author: "Mary Zaun"
+        - quote: "We keep praising ourselves for making the right decision..."
+          author: "Armen & Rita Baranian"
+
+    - question: "How important is community involvement in choosing a builder?"
+      answer: |
+        A builder's involvement in their local community is a significant factor that speaks volumes about their ethics and long-term reliability. It signifies a commitment that extends far beyond completing a project; it shows an investment in the town's fabric and future. A builder who is a longtime resident, raises a family there, and "gives generously to numerous community causes" is inherently accountable and accessible.
+
+        This deep-rooted presence transforms them from a vendor into a trusted neighbor and a "great community asset." They have a tangible reputation to protect and a genuine stake in ensuring their work enhances the community, providing homeowners with immense peace of mind that they are partnering with someone who will always be there to stand behind their work.
+      client_proof:
+        - quote: "He gives generously to numerous community causes and organizations."
+          author: "Dana & Myrna McCune"
+        - quote: "He was raised in La Canada and still maintains a residence in this area, making him a very accessible figure in this community."
+          author: "Dana & Myrna McCune"
+        - quote: "They are... a great community asset!"
+          author: "Anne Buettner"
+
+    - question: "What distinguishes an award-winning contractor’s project management?"
+      answer: |
+        The project management of an award-winning contractor is defined by a combination of superior skill and a profound commitment to client satisfaction. The logistical skill is evident in "amazing" scheduling and coordination capabilities that seamlessly orchestrate dozens of tasks, trades, and deliveries to keep the project moving efficiently toward completion.
+
+        However, what truly sets them apart is their philosophical approach: an unwavering, meticulous attention to detail and a core belief that every project deserves the highest level of care. This means that whether it's a small repair or a multi-million dollar home, the team treats the project "as if it was" their most important one, ensuring that "everything proceeded smoothly" from start to finish. This relentless dedication to excellence on all fronts is what delivers an exceptional, stress-free experience.
+      client_proof:
+        - quote: "His ability to schedule and coordinate the many aspects of the project was amazing."
+          author: "Mary Zaun"
+        - quote: "We were not Behr’s largest or grandest project, but each member of the team... treated this project as if it was."
+          author: "Mary Zaun"
+        - quote: "Under your supervision everything proceeded smoothly."
+          author: "Ramon & Lily Castillo"

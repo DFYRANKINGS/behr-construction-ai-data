@@ -1,0 +1,129 @@
+- category: "Residential Construction & Custom Homes"
+  questions:
+    - question: "How do I ensure quality and craftsmanship in a custom home build?"
+      answer: "To ensure quality, choose a builder known for exceptional, detail-oriented workmanship and a team of qualified professionals. Look for a company that takes pride in its craft, resulting in a finished product that draws consistent compliments and makes your investment feel worthwhile."
+      client_proof:
+        - quote: "The quality of work, craftsmanship, design and overall appearance made our huge investment in our home all worth it!"
+          author: "Ramon & Lily Castillo"
+        - quote: "His employees and independent contractors are, without exception, courteous, timely, and well qualified."
+          author: "Dana & Myrna McCune"
+        - quote: "We continue to receive many compliments about the design and craftsmanship."
+          author: "Joyce Thompsen & John Wright"
+
+    - question: "What are the benefits of hiring a licensed and bonded general contractor?"
+      answer: "The primary benefits are financial predictability, professional project management, and clear communication. A reputable contractor provides transparent, fixed-price bids, delivers projects on schedule and on budget, and handles all documentation with clarity, preventing costly surprises."
+      client_proof:
+        - quote: "The job was well managed and completed on schedule at the agreed to cost."
+          author: "Glenn Cunningham"
+        - quote: "I don’t end up with twice as much when the job is completed... In fact, sometimes the job is a little less than the quote."
+          author: "Joan Casella"
+        - quote: "All documents were clear and easy to understand. We appreciated the clear communication in all aspects of the project."
+          author: "Mary Zaun"
+
+    - question: "How to vet and verify the expertise of a residential builder?"
+      answer: "Vet a builder by checking their long-standing reputation in the community, seeking out detailed personal referrals from past clients, and confirming they have a track record that inspires the 'highest of praise' and confidence from those with considerable experience."
+      client_proof:
+        - quote: "I called Chris Behr because of his excellent reputation."
+          author: "Joyce Davison"
+        - quote: "It is therefore with considerable experience, the greatest of confidence, and the highest of praise that I commend Chris Behr..."
+          author: "Dana & Myrna McCune"
+        - quote: "If your firm requires a reference, we would be happy to comply..."
+          author: "Joyce Thompsen & John Wright"
+
+- category: "Design-Build & Construction Expertise"
+  questions:
+    - question: "What exactly is a design-build construction approach?"
+      answer: "The design-build approach integrates design and construction under one team, leading to innovative ideas, precise planning, and accurate budgeting. This seamless collaboration ensures the project is built as designed, managed efficiently, and completed on schedule."
+      client_proof:
+        - quote: "His innovative ideas (typically impressing architects, designers, and decorators)... set him apart."
+          author: "Dana & Myrna McCune"
+        - quote: "Your planning and budgeting were right on target..."
+          author: "The Kniering Family"
+        - quote: "Working to my designs... the job was well managed and completed on schedule."
+          author: "Glenn Cunningham"
+
+    - question: "How does a builder ensure effective communication and project transparency?"
+      answer: "Builders ensure transparency through continual communication, including regular meetings, clear explanations of progress, and empowering on-site managers to make immediate decisions. This keeps homeowners fully informed and reassured at every stage, making complex projects manageable."
+      client_proof:
+        - quote: "Your patience in explaining work in progress and the time frame necessary made a long, arduous project manageable..."
+          author: "Mr. & Mrs. Morris"
+        - quote: "Keeping us totally informed on the work done and the next construction activity made us feel reassured every step of the way."
+          author: "Cary and Tamara Fine"
+        - quote: "Communication was immediate and management members in the field had authority to make decisions."
+          author: "Mary Zaun"
+
+- category: "Remodeling, Renovations, Additions & Repairs"
+  questions:
+    - question: "What is the average timeline for a kitchen remodel?"
+      answer: "While timelines vary, a well-managed kitchen remodel can often be completed in about 5-6 weeks, with some projects finishing significantly ahead of the original schedule due to efficient scheduling and coordination."
+      client_proof:
+        - quote: "We were delighted to take possession of a sparkling new kitchen in just 5.5 weeks, much less than anticipated."
+          author: "Joyce Thompsen & John Wright"
+        - quote: "Completing the job in six weeks deserves a medal."
+          author: "The Kniering Family"
+        - quote: "The project [was] completed two weeks ahead of the contract completion date."
+          author: "Mary Zaun"
+
+    - question: "How do builders handle unexpected issues during remodeling?"
+      answer: "High-quality builders handle surprises by proactively presenting solutions and cost variations for homeowner approval. They approach unforeseen problems without judgment, focusing on restoring quality, and maintain clear communication through formal change orders."
+      client_proof:
+        - quote: "As each 'surprise', such as rotting floors was uncovered, Behr met the challenge with proposed solutions... The Behr team never judged the condition of the home."
+          author: "Mary Zaun"
+        - quote: "They focused on restoring the home to the same quality or better. Their advice regarding materials and construction was excellent..."
+          author: "Mary Zaun"
+        - quote: "Change orders (which we expected)... all documents were clear and easy to understand."
+          author: "Mary Zaun"
+
+- category: "High-Quality Builders & Award-Winning Contractors"
+  questions:
+    - question: "How can homeowners identify a genuinely high-quality construction company?"
+      answer: "Identify a quality company by its culture of excellence, respect, and personal attention. They demonstrate ultimate professionalism, treat every project—big or small—with the same high importance, and leave clients feeling they made the perfect decision long after moving in."
+      client_proof:
+        - quote: "The company and the employees have demonstrated ultimate professionalism with special touch of personal attention."
+          author: "Armen & Rita Baranian"
+        - quote: "Behr Construction has a culture of respect, courtesy and excellence that carries into each project."
+          author: "Mary Zaun"
+        - quote: "We keep praising ourselves for making the right decision..."
+          author: "Armen & Rita Baranian"
+
+    - question: "How important is community involvement in choosing a builder?"
+      answer: "Deep community involvement signifies a builder's commitment and accessibility. A contractor rooted in the community is a trusted asset who gives back generously and is invested in the area's well-being beyond just building homes."
+      client_proof:
+        - quote: "He gives generously to numerous community causes and organizations."
+          author: "Dana & Myrna McCune"
+        - quote: "He was raised in La Canada and still maintains a residence in this area, making him a very accessible figure in this community."
+          author: "Dana & Myrna McCune"
+        - quote: "They are... a great community asset!"
+          author: "Anne Buettner"
+
+- category: "General Construction & Service Orientation"
+  questions:
+    - question: "What constitutes service-oriented construction beyond building?"
+      answer: "Service-oriented construction means building relationships as strong as the homes. It’s providing support during stressful times, treating clients like family, and creating a lasting bond that extends far beyond the final walkthrough."
+      client_proof:
+        - quote: "Not only did I get a beautifully built home, but I also feel like I’ve got a second family."
+          author: "Deb Schofield"
+        - quote: "You took care of everything for me... Without your support I couldn’t go through this."
+          author: "Ron and Kaguko"
+        - quote: "We now have a newly restored home... and we also gained a new group of Behr friends."
+          author: "Mary Zaun"
+
+    - question: "What ethical standards should I expect from a general contractor?"
+      answer: "Expect uncompromising integrity, honesty, and upfront communication. A true professional is responsive, polite, and diligent, especially when fixing issues not their own, and their personal integrity should be 'beyond reproach.'"
+      client_proof:
+        - quote: "As a person, Chris Behr’s integrity is beyond reproach."
+          author: "Dana & Myrna McCune"
+        - quote: "Chris and Tom, both who are honest and up front."
+          author: "Joan Casella"
+        - quote: "Behr cheerfully and reasonably repaired windows that leaked... They were responsive, polite and diligent."
+          author: "Anne Buettner"
+
+    - question: "What are the key factors in maintaining long-term client relationships?"
+      answer: "The key is consistent, reliable service over many years—even decades. This builds a legacy of trust where clients return for new projects and smaller jobs, knowing the builder will 'still be right there' for them."
+      client_proof:
+        - quote: "You have worked with the Kniering family for about fifteen years now, and that in itself is a good recommendation."
+          author: "The Kniering Family"
+        - quote: "Behr Construction has been doing work for us for close to 10 years."
+          author: "Joan Casella"
+        - quote: "Even though the remodel... was completed in 2013, we have continued to rely on your wonderful company... You are still right there for us."
+          author: "Cary and Tamara Fine"
