@@ -1,0 +1,42 @@
+- team:
+  - name: "Chris Behr"
+    title: "Founder"
+  - name: "Jeff Baker"
+    title: "Vice President, Chief Operating Officer and Head of Estimating"
+  - name: "John Mills"
+    title: "Vice President, Chief Technical Officer"
+  - name: "Kurt Knechtel"
+    title: "Vice President, Chief Information Officer"
+
+- stats:
+  - combined_experience: 90
+    unit: "years"
+  - projects_completed: 4000
+    since: 1975
+  - license_number: "B409066"
+    license_issuer: "State of California; Department of Consumer Affairs"
+  - recognition: "Top 500 Remodeling companies in the United States"
+    source: "The Qualified Remodeler magazine"
+    years: "1996 to present"
+  - local_awards: "Crescenta Valley Weekly Finest General Contractor"
+    years: [2012, 2013, 2014, 2015, 2017]
+
+- project_scope:
+  types: ["Remodeling", "Room Additions", "New Custom Homes", "Repairs", "Alterations", "Renovations", "Consulting", "Expert Witnessing", "Default Take-Over Work"]
+  size_sq_ft:
+    min: 1500
+    max: 10000
+  value_range:
+    min: 500
+    max: 10000000
+    unit: "USD"
+
+- memberships:
+  - "La Canada Flintridge Chamber of Commerce – Board of Directors"
+  - "United States Chamber of Commerce"
+  - "National Federation of Independent Business"
+  - "The Better Business Bureau"
+  - "United States Green Building Council"
+  - "Contractors State License Board"
+  - "Western Regional Master Builder Association"
+  - "American Institute of Architects"
