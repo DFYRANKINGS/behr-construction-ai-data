@@ -1,1 +1,112 @@
-
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Behr Construction",
+  "description": "A full-service program and construction management firm, offering services from project planning through completion.",
+  "serviceArea": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 34.0522,
+      "longitude": -118.2437
+    },
+    "geoRadius": "50000"
+  },
+  "areaServed": [
+    "La Canada",
+    "La Crescenta",
+    "Pasadena",
+    "Glendale",
+    "Los Angeles",
+    "Beverly Hills",
+    "Malibu",
+    "San Gabriel Valley",
+    "San Fernando Valley"
+  ],
+  "makesOffer": [
+    {
+      "@type": "Service",
+      "name": "Custom Home Building",
+      "description": "Construction of new residences, meticulously custom-built and carefully planned to your exact specifications.",
+      "category": "Construction"
+    },
+    {
+      "@type": "Service",
+      "name": "Specialty Construction",
+      "description": "Expertise in a wide range of specialty projects including decks, parking lots, swimming pools, and tennis courts.",
+      "category": "Construction"
+    },
+    {
+      "@type": "Service",
+      "name": "Disaster Reconstruction",
+      "description": "Expert restoration and rebuilding services for properties damaged by flooding and fire.",
+      "category": "Construction"
+    },
+    {
+      "@type": "Service",
+      "name": "Default Construction Completion",
+      "description": "Completion of projects where previous contractors have been terminated or are in breach of contract. Available on a referral basis only.",
+      "category": "Construction"
+    },
+    {
+      "@type": "Service",
+      "name": "Whole-House Remodeling & Additions",
+      "description": "Transform your entire home with major whole-house remodels or thoughtfully designed room additions.",
+      "category": "Remodel & Improvements"
+    },
+    {
+      "@type": "Service",
+      "name": "Kitchen & Bath Remodeling",
+      "description": "Creating beautiful, functional kitchens and bathrooms tailored to your lifestyle.",
+      "category": "Remodel & Improvements"
+    },
+    {
+      "@type": "Service",
+      "name": "Commercial Tenant Improvements",
+      "description": "A dedicated division for commercial projects, focusing on high-quality tenant improvements.",
+      "category": "Remodel & Improvements"
+    },
+    {
+      "@type": "Service",
+      "name": "Construction & Development Management",
+      "description": "Professional oversight of the entire building process, ensuring projects are executed efficiently, on budget, and to the highest standards.",
+      "category": "Consulting & Management"
+    },
+    {
+      "@type": "Service",
+      "name": "Expert Witness & Consulting",
+      "description": "Providing expert analysis and testimony on construction-related issues for homeowners, law firms, and insurance companies.",
+      "category": "Consulting & Management"
+    }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Behr Construction Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Construction Services Package",
+          "description": "Comprehensive construction services for residential and specialty projects."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Remodeling Services Package",
+          "description": "Full-service remodeling and improvement solutions for homes and businesses."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Consulting Services Package",
+          "description": "Professional construction management and expert witness services."
+        }
+      }
+    ]
+  }
+}
