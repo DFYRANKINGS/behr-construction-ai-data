@@ -1,0 +1,45 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Behr Construction",
+  "description": "A full-service construction management firm with over 90 years of combined team experience, specializing in custom homes, remodeling, and expert consulting.",
+  "foundingDate": "1975",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "CA"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "40"
+  },
+  "award": [
+    "Crescenta Valley Weekly Finest General Contractor (2012, 2013, 2014, 2015, 2017)",
+    "Qualified Remodeler Top 500 Remodeler (1996-Present)"
+  ],
+  "brand": {
+    "@type": "Organization",
+    "name": "Behr Construction"
+  },
+  "hasCredential": "CA License #B409066",
+  "knowsAbout": [
+    "Residential Construction",
+    "Custom Home Building",
+    "Design-Build",
+    "Remodeling",
+    "Construction Management",
+    "Expert Witness",
+    "Construction Consulting"
+  ],
+  "legalName": "Behr Construction Co.",
+  "memberOf": [
+    {"@type": "Organization", "name": "Better Business Bureau"},
+    {"@type": "Organization", "name": "United States Green Building Council"},
+    {"@type": "Organization", "name": "American Institute of Architects"},
+    {"@type": "Organization", "name": "La Canada Flintridge Chamber of Commerce"}
+  ],
+  "numberOfEmployees": "25",
+  "slogan": "Over 90 Years Combined Experience"
+}
+</script>
