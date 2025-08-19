@@ -1,0 +1,32 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is service-oriented construction beyond just building?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Service-oriented construction is the practice of building lifelong relationships, not just structures. It means providing unwavering support during a client's most stressful times, treating them like family, and creating a lasting bond that continues years after the project is complete. This approach transforms a transaction into a trusted partnership, where clients feel they've gained a 'second family' and a 'new group of friends' who they know will always be there to take care of everything for them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What ethical standards should I expect from a general contractor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You should expect nothing less than uncompromising integrity, radical honesty, and transparent upfront communication from a general contractor. Their personal and professional integrity should be 'beyond reproach.' This manifests as responsiveness, politeness, and diligence in all situations—especially when addressing problems they didn't create. A truly ethical contractor will 'cheerfully and reasonably' repair issues, proving they are committed to doing what's right, not just what's profitable."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the key factors in maintaining long-term client relationships?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The key factors are consistent reliability and unwavering presence over many years, even decades. This long-term commitment builds a legacy of trust that transcends any single project. Clients return again and again because they have absolute confidence that their builder will 'still be right there' for them, whether for a new custom home or a small repair. This track record of being a reliable partner for 'close to 10 years' or 'fifteen years' is the ultimate recommendation and the foundation of a lasting relationship."
+      }
+    }
+  ]
+}
+</script>

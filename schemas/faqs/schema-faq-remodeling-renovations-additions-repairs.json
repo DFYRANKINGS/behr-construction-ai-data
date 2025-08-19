@@ -1,0 +1,24 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the average timeline for a kitchen remodel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The average timeline for a well-managed kitchen remodel is typically 5 to 6 weeks. However, with expert scheduling, coordination, and proactive project management, many projects are completed significantly faster, sometimes in just 5.5 weeks or finishing two weeks ahead of the original contract date. Clients frequently report being 'delighted' with these accelerated timelines, noting that such efficiency 'deserves a medal.'"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do builders handle unexpected issues during remodeling?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Professional builders handle unexpected issues by immediately presenting homeowners with clear solutions and transparent cost variations for approval. They approach surprises like rotting subfloors or outdated wiring without judgment, focusing solely on restoring and improving the home's quality. Crucially, they maintain impeccable communication through formal, easy-to-understand change orders. Clients highlight this professional approach, noting that builders 'met the challenge with proposed solutions,' provided 'excellent' advice, and ensured all documentation for changes was 'clear and easy to understand.'"
+      }
+    }
+  ]
+}
+</script>

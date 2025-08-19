@@ -1,0 +1,24 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What exactly is a design-build construction approach?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A design-build construction approach is a method where the design and construction services are contracted under a single entity, creating a unified workflow from concept to completion. This integration fosters innovation, precise planning, and accurate budgeting, ensuring the project is built exactly as designed, managed with maximum efficiency, and delivered on schedule. Clients report that this leads to 'innovative ideas' and that 'planning and budgeting were right on target,' resulting in a project that is 'well managed and completed on schedule.'"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does a builder ensure effective communication and project transparency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A builder ensures transparency through a commitment to continual communication. This includes regular updates, clear explanations of progress and timelines, and empowering on-site project managers to make immediate decisions. This proactive approach keeps homeowners fully informed and reassured at every stage, transforming complex, arduous projects into manageable experiences. Homeowners consistently praise builders for their 'patience in explaining work in progress,' which makes them feel 'reassured every step of the way,' and note that 'communication was immediate' from empowered field managers."
+      }
+    }
+  ]
+}
+</script>

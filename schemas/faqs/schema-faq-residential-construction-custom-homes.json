@@ -1,0 +1,32 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I ensure quality and craftsmanship in a custom home build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To ensure quality, choose a builder known for exceptional, detail-oriented workmanship and a team of qualified professionals. Look for a company that takes pride in its craft, resulting in a finished product that draws consistent compliments and makes your investment feel worthwhile. As one client stated, 'The quality of work, craftsmanship, design and overall appearance made our huge investment in our home all worth it!'"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the benefits of hiring a licensed and bonded general contractor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The primary benefits are financial predictability, professional project management, and clear communication. A reputable contractor provides transparent, fixed-price bids, delivers projects on schedule and on budget, and handles all documentation with clarity, preventing costly surprises. This is confirmed by client reviews that note, 'The job was well managed and completed on schedule at the agreed to cost,' and 'I don’t end up with twice as much when the job is completed... In fact, sometimes the job is a little less than the quote.'"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to vet and verify the expertise of a residential builder?",
+      "acceptedAnswer": {
+        "@type": " Answer",
+        "text": "Vet a builder by checking their long-standing reputation in the community, seeking out detailed personal referrals from past clients, and confirming they have a track record that inspires the 'highest of praise' and confidence from those with considerable experience. Homeowners often choose a builder because of an 'excellent reputation' and are willing to provide personal references based on their positive experience."
+      }
+    }
+  ]
+}
+</script>
