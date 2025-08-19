@@ -51,3 +51,9 @@ Providing expert witnessing and consulting services on construction-related issu
 *   Insurance Companies
 
 Our expert analysis helps resolve disputes, clarify complexities, and deliver clear, authoritative testimony based on decades of field experience.
+
+---
+
+**We Proudly Serve:** La Canada, La Crescenta, Pasadena, Glendale, Los Angeles, Beverly Hills, Malibu, San Gabriel Valley, and San Fernando Valley.
+
+[*View our full service areas and communities we accommodate.*](https://raw.githubusercontent.com/DFYRANKINGS/behr-construction-ai-data/main/service-areas.md)
