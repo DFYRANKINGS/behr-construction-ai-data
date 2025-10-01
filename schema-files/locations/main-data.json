@@ -1,0 +1,11 @@
+{
+  "client_name": "Behr Construction",
+  "location_id": 1.0,
+  "location_name": "Headquarters Office",
+  "address": "1363 Foothill Blvd #1",
+  "city": "La Canada Flintridge",
+  "state": "CA",
+  "postal_code": 91011.0,
+  "phone": "(818) 952-2516",
+  "hours": "Mon-Fri 7:00 AM - 5:00 PM; Closed Sat & Sun"
+}
