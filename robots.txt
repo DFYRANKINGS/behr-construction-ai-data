@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /schema-files/
+Allow: /ai-sitemap.xml
+Sitemap: https://raw.githubusercontent.com/DFYRANKINGS/behr-construction-ai-data/main/ai-sitemap.xml
+
+# Explicitly invite AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: CCBot  # Common Crawl → feeds many AI models
+Allow: /
+
+User-agent: FacebookBot  # For Meta AI
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
