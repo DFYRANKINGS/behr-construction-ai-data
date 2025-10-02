@@ -15,6 +15,7 @@ A comprehensive repository for creating AI-optimized data systems with automated
 ├── .github/workflows/          # GitHub Actions workflows
 │   ├── auto-ping-sitemap.yml       # Automated search engine ping upon new files submitted or updated workflow
 │   └── generate-from-xlsx.yml  # Main processing workflow when client-data.xlsx is updated or submitted
+|   └── auto-refresh.yml        # auto refreshes if sitemap hasn't been updated/updates and pings search engines every 28 days
 ├── docs/                      # Documentation
 │   ├── comprehensive_readme.md
 │   ├── configuration_templates.md
