@@ -1,100 +1,111 @@
-name: 🔄 Auto Refresh AI Files (Every 4 Weeks If Stale + Changed)
+name: "🔄 Auto Refresh AI Files"
 
 on:
   schedule:
-    - cron: "0 4 * * 0"   # Every Sunday at 04:00 UTC
-  workflow_dispatch:       # Allow manual run
+    # Runs every Sunday at 04:00 UTC, but will SKIP unless stale (>= 28 days)
+    - cron: "0 4 * * 0"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Force run even if not stale (true/false)"
+        required: false
+        default: "false"
 
 permissions:
   contents: write
 
+concurrency:
+  group: auto-refresh-${{ github.repository }}
+  cancel-in-progress: true
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
+
     steps:
-      - name: 📥 Checkout Repository
+      - name: Checkout
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+          persist-credentials: true
 
-      - name: 🐍 Set up Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: 📦 Install Dependencies
+      - name: Install deps
         run: |
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl pyyaml
 
-      - name: 🕰️ Check If Sitemap Is Older Than 28 Days
-        id: check_stale
+      - name: Skip if not stale (unless force)
+        id: stale_check
+        shell: bash
         run: |
-          if [ -f "ai-sitemap.xml" ]; then
-            FILE_MTIME=$(stat -c %Y ai-sitemap.xml)
-            NOW=$(date +%s)
-            DIFF_DAYS=$(( (NOW - FILE_MTIME) / 86400 ))
-            echo "📄 ai-sitemap.xml last modified $DIFF_DAYS days ago."
-            if [ $DIFF_DAYS -ge 28 ]; then
-              echo "✅ File is stale — proceeding"
-              echo "is_stale=true" >> $GITHUB_ENV
-            else
-              echo "❌ File is fresh — skipping auto-refresh"
-              echo "is_stale=false" >> $GITHUB_ENV
-            fi
-          else
-            echo "⚠️ ai-sitemap.xml not found — treating as stale"
-            echo "is_stale=true" >> $GITHUB_ENV
+          set -euo pipefail
+
+          FORCE="${{ github.event.inputs.force }}"
+          if [ "$FORCE" = "true" ]; then
+            echo "✅ Force run requested."
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
 
-      - name: 🔄 Skip If Not Stale
-        if: env.is_stale != 'true'
-        run: |
-          echo "✅ Skipping — recent activity detected."
-          exit 0
-
-      - name: 🗃️ Re-generate Schema Files
-        run: |
-          python ai-generators/generate_files_from_xlsx.py --input templates/client-data.xlsx
-
-      - name: 🗺️ Re-generate Sitemap
-        run: |
-          python generate_sitemaps.py
-          touch ai-sitemap.xml
-
-      - name: 🧪 Detect Real Changes
-        id: detect_changes
-        run: |
-          git add --all
-          if ! git diff --cached --quiet; then
-            echo "changes_detected=true" >> $GITHUB_ENV
-            echo "✅ Real changes detected — will commit and ping"
-          else
-            echo "changes_detected=false" >> $GITHUB_ENV
-            echo "✅ No real changes — skipping commit and ping"
+          FILE="ai-sitemap.xml"
+          if [ ! -f "$FILE" ]; then
+            echo "⚠️ $FILE not found — treat as stale."
+            echo "stale=true" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
 
-      - name: 💾 Commit Only If Changed
-        if: env.changes_detected == 'true'
+          NOW=$(date +%s)
+          MOD=$(stat -c %Y "$FILE")
+          AGE=$(( (NOW - MOD) / 86400 ))
+          echo "ai-sitemap.xml age: ${AGE} day(s)"
+
+          if [ "$AGE" -lt 28 ]; then
+            echo "⏭️ Not stale yet (<28 days) — skipping."
+            echo "stale=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "✅ Stale (>=28 days) — proceeding."
+          echo "stale=true" >> "$GITHUB_OUTPUT"
+
+      - name: Generate schema files (clean + overwrite; removes -1 duplicates)
+        if: steps.stale_check.outputs.stale == 'true'
         run: |
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git commit -m "🔄 Auto-refresh: Content regenerated after 28+ days idle [$(date +'%Y-%m-%d')]"
-          git push origin main
-          echo "✅ Changes pushed"
+          set -euo pipefail
+          python ai-generators/generate_files_from_xlsx.py --input templates/AI-Visibility-Master-Template.xlsx --clean
 
-      - name: 🤖 Ping Search Engines (ONLY if changes committed)
-        if: env.changes_detected == 'true' && github.ref == 'refs/heads/main'
+      - name: Build public pages
+        if: steps.stale_check.outputs.stale == 'true'
         run: |
-          SITEMAP_URL="https://raw.githubusercontent.com/${{ github.repository }}/main/ai-sitemap.xml"
-          echo "📡 Pinging search engines with sitemap: $SITEMAP_URL"
+          set -euo pipefail
+          python ai-generators/build_public_pages.py
 
-          echo "→ Notifying Google Search..."
-          curl -s -o /dev/null -w "%{http_code}\n" "http://google.com/ping?sitemap=$SITEMAP_URL" \
-            && echo "✅ Google ping successful" \
-            || echo "❌ Google ping failed (workflow continues)"
+      - name: Generate sitemaps
+        if: steps.stale_check.outputs.stale == 'true'
+        run: |
+          set -euo pipefail
+          python generate_sitemaps.py --include-all-html
 
-          echo "→ Notifying Bing + Copilot..."
-          curl -s -o /dev/null -w "%{http_code}\n" "http://www.bing.com/ping?sitemap=$SITEMAP_URL" \
-            && echo "✅ Bing ping successful" \
-            || echo "❌ Bing ping failed (workflow continues)"
+      - name: Commit + push (only if changes)
+        if: steps.stale_check.outputs.stale == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "✅ No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Auto refresh AI files"
+          git push
