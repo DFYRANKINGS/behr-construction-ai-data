@@ -1,0 +1,46 @@
+name: Build public pages & sitemaps
+
+on:
+  push:
+    paths:
+      - 'schemas/**'
+      - 'ai-generators/**'
+      - 'build_public_pages.py'
+      - 'generate_sitemaps.py'
+      - '.github/workflows/build-public-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-pages-and-sitemaps:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
+
+      - name: Build public pages
+        run: python build_public_pages.py
+
+      - name: Build sitemaps
+        run: python generate_sitemaps.py
+
+      - name: Commit & push generated pages (if changed)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Auto-generate public pages & sitemaps" || echo "No changes to commit"
+          git push
