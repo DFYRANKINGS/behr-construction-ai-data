@@ -1,0 +1,69 @@
+name: Auto Refresh (regenerate schemas + pages)
+
+on:
+  schedule:
+    - cron: "0 9 * * *"  # daily 9:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl pyyaml
+
+      - name: Pick input workbook (legacy or new)
+        id: pick
+        shell: bash
+        run: |
+          set -e
+          if [ -f "templates/AI-Visibility-Master-Template.xlsx" ]; then
+            echo "input=templates/AI-Visibility-Master-Template.xlsx" >> $GITHUB_OUTPUT
+          elif [ -f "templates/client-data.xlsx" ]; then
+            echo "input=templates/client-data.xlsx" >> $GITHUB_OUTPUT
+          elif [ -f "client-data.xlsx" ]; then
+            echo "input=client-data.xlsx" >> $GITHUB_OUTPUT
+          else
+            echo "❌ No workbook found. Expected one of:"
+            echo " - templates/AI-Visibility-Master-Template.xlsx"
+            echo " - templates/client-data.xlsx"
+            echo " - client-data.xlsx"
+            exit 1
+          fi
+
+      - name: Generate schemas from workbook (NO duplicates)
+        run: |
+          python generate_files_from_xlsx.py --input "${{ steps.pick.outputs.input }}" --clean
+
+      - name: Build public pages
+        run: |
+          python build_public_pages.py
+
+      - name: Build sitemaps (optional)
+        run: |
+          if [ -f "generate_sitemaps.py" ]; then
+            python generate_sitemaps.py
+          else
+            echo "generate_sitemaps.py not found — skipping"
+          fi
+
+      - name: Commit and push (only if changes)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Auto refresh: regenerate schemas + pages" || echo "No changes to commit"
+          git push
